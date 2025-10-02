@@ -14,18 +14,25 @@ namespace DecoratorPattern.Beverages
     }
     internal abstract class Beverage
     {
-        public Size Size { get { return size; } set { size = value; } }
         private Size size;
-
+        public Size Size
+        {
+            get
+            {
+                if (baseBeverage != null)
+                {
+                    return baseBeverage.Size;
+                }
+                return size;
+            }
+            set { size = value; }
+        }
         protected string description = "Unknown";
         protected Beverage baseBeverage = null;
-
-
         public virtual string GetDescription()
         {
             return description;
         }
-
         public abstract double cost();
     }
 }
