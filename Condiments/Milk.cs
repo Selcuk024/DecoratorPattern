@@ -2,15 +2,14 @@
 
 namespace DecoratorPattern.Condiments
 {
-    internal class HalfMilk : CondimentDecorator
+    internal class Milk : CondimentDecorator
     {
-        public HalfMilk(Beverage beverage)
+        public Milk(Beverage beverage)
         {
             this.baseBeverage = beverage;
             this.Size = beverage.Size;
         }
-
-        public double GetCondimentPriceBySize(double tallPrice, double grandePrice, double vendiPrice)
+        private double GetCondimentPriceBySize(double tallPrice, double grandePrice, double vendiPrice)
         {
             switch (baseBeverage.Size)
             {
@@ -24,15 +23,13 @@ namespace DecoratorPattern.Condiments
                     return tallPrice;
             }
         }
-
         public override double cost()
         {
             return GetCondimentPriceBySize(0.10, 0.15, 0.20) + baseBeverage.cost();
         }
-
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Half Milk";
+            return baseBeverage.GetDescription() + ", Milk";
         }
     }
 }
