@@ -14,6 +14,7 @@ namespace DecoratorPattern.Beverages
             description = "Chocolate";
             this.baseBeverage = beverage;
         }
+
         public override string GetDescription()
         {
             if (baseBeverage != null)
@@ -22,10 +23,11 @@ namespace DecoratorPattern.Beverages
             }
             return description;
         }
+
         public override double cost()
         {
             if (baseBeverage != null)
-            {
+            {   
                 return 1.50 + baseBeverage.cost();
             }
             return 1.50;
